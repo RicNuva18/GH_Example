@@ -29,20 +29,15 @@ jobs:
         pip install -r requirements.txt
   test:
     runs-on: ubuntu-latest
+    
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
     - name: Run tests
       run: |
         pytest --maxfail=1 --disable-warnings -q
-  deploy_artifact:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Package the application
-      run: |
-        zip -r my-flask-app.zip .
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: flask-app-artifact
-        path: my-flask-app.zip
