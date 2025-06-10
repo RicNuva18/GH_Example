@@ -12,7 +12,7 @@ jobs:
   build:
     env:
       PYTHON_VERSION: 3.9
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
